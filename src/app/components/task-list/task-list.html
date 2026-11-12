@@ -1,0 +1,45 @@
+<section class="card">
+  <h1>My Tasks</h1>
+
+  <form class="add" (submit)="$event.preventDefault(); addTask(newTask)">
+    <input #newTask type="text" placeholder="Add a new task..." aria-label="New task" />
+    <button type="submit">Add</button>
+  </form>
+
+  @if (taskService.tasks().length > 0) {
+    <p class="progress">
+      {{ taskService.doneCount() }} / {{ taskService.total() }} done
+    </p>
+
+    <ul class="tasks" data-testid="task-list">
+      @for (task of taskService.tasks(); track task.id; let i = $index) {
+        <li>
+          <span class="num">{{ i + 1 }}.</span>
+          <span class="title" [class.done]="task.status === 'done'">{{ task.title }}</span>
+
+          @switch (task.status) {
+            @case ('done') {
+              <button class="badge done" (click)="taskService.cycleStatus(task.id)">✔ Done</button>
+            }
+            @case ('in-progress') {
+              <button class="badge progress-badge" (click)="taskService.cycleStatus(task.id)">
+                ⏳ In progress
+              </button>
+            }
+            @default {
+              <button class="badge todo" (click)="taskService.cycleStatus(task.id)">○ To do</button>
+            }
+          }
+
+          <button class="remove" (click)="taskService.remove(task.id)" aria-label="Remove task">
+            &times;
+          </button>
+        </li>
+      } @empty {
+        <li class="empty">Nothing here.</li>
+      }
+    </ul>
+  } @else {
+    <p class="empty">No tasks yet. Add your first one above!</p>
+  }
+</section>

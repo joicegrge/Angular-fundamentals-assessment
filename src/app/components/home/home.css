@@ -1,0 +1,31 @@
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+  color: #1e293b;
+}
+
+.summary {
+  font-size: 1.1rem;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #4f46e5;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.button:hover {
+  background: #4338ca;
+}

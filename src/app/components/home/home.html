@@ -1,0 +1,18 @@
+<section class="card">
+  <h1>Welcome to Task Tracker</h1>
+  <p>
+    A small Angular app built with standalone components, an injectable service,
+    client-side routing and the new control-flow syntax.
+  </p>
+
+  @if (taskService.total() > 0) {
+    <p class="summary">
+      You have completed <strong>{{ taskService.doneCount() }}</strong> of
+      <strong>{{ taskService.total() }}</strong> tasks.
+    </p>
+  } @else {
+    <p class="summary">You have no tasks yet.</p>
+  }
+
+  <a class="button" routerLink="/tasks">Go to my tasks &rarr;</a>
+</section>

@@ -1,0 +1,11 @@
+<header class="topbar">
+  <span class="brand">Task Tracker</span>
+  <nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+  </nav>
+</header>
+
+<main>
+  <router-outlet />
+</main>
